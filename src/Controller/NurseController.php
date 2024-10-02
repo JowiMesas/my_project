@@ -13,8 +13,8 @@ class NurseController extends AbstractController
     public function findByName(Request $peticionNurse): JsonResponse
     {
         $nameNurse = $peticionNurse ->query -> get('first_name');
-        $json_nurse = file_get_contents('C:\Users\JOELMESASHONTORIA\Documents\Symfony\my_project\src\Controller\DATA.json');
-        $json_data = json_decode($json_nurse, true);
+        $json_nurse = file_get_contents('DATA.json');
+        $json_data = json_decode($json_nurse, associative: true);
         $filtrarNombre = array_filter($json_data, function($nurse) use ($nameNurse){
             return strtolower($nurse['first_name']) === strtolower($nameNurse);
         });
